@@ -1,0 +1,34 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Royal Milk Tea",
+      "price": 4.8,
+      "toppings": [1,2]
+    },
+    {
+      "id": 2,
+      "name": "Green Milk Tea",
+      "price": 4.6,
+      "toppings": [2]
+    },
+    {
+      "id": 3,
+      "name": "Oolong Milk Tea",
+      "price": 5.1,
+      "toppings": [1,2]
+    },
+    {
+      "id": 4,
+      "name": "Blueberry Milk Tea",
+      "price": 5.1,
+      "toppings": [1,2]
+    },
+    {
+      "id": 5,
+      "name": "Mango Milk Tea",
+      "price": 5.1,
+      "toppings": [2,3]
+    }
+  ]
+}

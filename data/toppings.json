@@ -1,0 +1,17 @@
+{
+    "toppings": [
+      {
+        "id": 1,
+       "name":"Milk Foam"
+      },
+      {
+        "id": 2,
+        "name": "Pearl"
+      },
+      {
+        "id": 3,
+        "name": "Aloe"
+      }
+    ]
+  }
+  
