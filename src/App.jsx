@@ -15,6 +15,7 @@ function App() {
 
   const [selected, setSelected] = useState();
   const [loading, setLoading] = useState(true);
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   useEffect(() => {
     const getDate = async () => {
@@ -61,7 +62,7 @@ function App() {
   return loading ? (
     <div>Loading</div>
   ) : (
-    <div className="h-screen flex flex-row">
+    <div className="h-screen flex flex-col md:flex-row">
       {/* Left sidebar */}
       <aside className="hidden md:flex md:w-[200px] flex-col bg-primary">
         <span className="h-16 flex items-center justify-center text-white font-bold text-2xl">
@@ -87,6 +88,77 @@ function App() {
           </ul>
         </nav>
       </aside>
+      <section className="flex bg-primary py-4 px-6 text-white md:hidden">
+        <div
+          className="inline-flex justify-evenly items-center cursor-pointer"
+          onClick={() => setIsNavOpen((prev) => !prev)}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-menu-2"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M4 6l16 0"></path>
+            <path d="M4 12l16 0"></path>
+            <path d="M4 18l16 0"></path>
+          </svg>
+        </div>
+        <span className="text-white font-bold text-2xl mx-auto">
+          Milk Tea Store
+        </span>
+
+        <div
+          className={
+            isNavOpen
+              ? "absolute w-full h-screen top-0 left-0 bg-white z-10 flex flex-col items-center"
+              : "hidden"
+          }
+        >
+          <div
+            className="absolute top-0 right-0 px-8 py-8"
+            onClick={() => setIsNavOpen(false)}
+          >
+            <svg
+              className="h-8 w-8 text-gray-600"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </div>
+          <ul className="flex h-full flex-col items-center justify-center min-h-[250px]">
+            {stores.map((store) => (
+              <li
+                className={`px-4 rounded py-3 inline-flex cursor-pointer justify-center font-semibold ${
+                  selected.id === store.id
+                    ? "bg-[#304476] text-white"
+                    : "text-[#70788f]"
+                }`}
+                onClick={() => {
+                  setSelected(store);
+                  setIsNavOpen(false);
+                }}
+                key={store.id}
+              >
+                {store.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
       {/* Content */}
       <main className="bg-[#f0f0f0] flex-1 px-2 md:px-16 pt-12 overflow-auto pb-6">
         <div className="flex flex-col text-primary gap-6 ">
